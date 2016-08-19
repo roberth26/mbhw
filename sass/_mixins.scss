@@ -1,0 +1,31 @@
+@mixin clearfix( $extend: true ) {
+    @if $extend == true {
+        @extend %clearfix;
+    } @else {
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
+}
+
+%clearfix {
+    @include clearfix( $extend: false );
+}
+
+@mixin center_vertical( $extend: true ) {
+    @if $extend == true {
+        @extend %center_vertical;
+    } @else {
+        &:after {
+			position: absolute;
+			top: 50%;
+			transform: translateY( -50% );
+        }
+    }
+}
+
+%center_vertical {
+    @include center_vertical( $extend: false );
+}

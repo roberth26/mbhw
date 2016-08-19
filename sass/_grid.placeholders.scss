@@ -1,16 +1,16 @@
-.container {
+%container {
 	margin: 0 auto;
 	width: 100%;
 	padding: 0 ( $gutter_width / 2 );
 	max-width: 960px + $gutter_width;
 }
 
-.row {
+%row {
 	margin: 0 ( $gutter_width / 2 * -1 );
 	@include clearfix;
 }
 
-.col {
+%col {
 	float: left;
 	padding: 0 ( $gutter_width / 2 );
 	min-height: 1px;
@@ -18,8 +18,8 @@
 
 // generate mobile column classes (12)
 @for $i from 12 through 1 {
-    .col-#{$i}-mobile {
-    	@extend .col;
+    %col-#{$i}-mobile {
+    	@extend %col;
         width: calc( 100% * #{$i} / 12 );
     }
 }
@@ -27,7 +27,7 @@
 @media ( min-width: $desktop_min ) {
 	// generate desktop column classes (12)
 	@for $i from 12 through 1 {
-	    .col-#{$i}-desktop {
+	    %col-#{$i}-desktop {
 	        width: calc( 100% * #{$i} / 12 );
 	    }
 	}
