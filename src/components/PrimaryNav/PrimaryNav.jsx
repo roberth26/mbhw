@@ -4,9 +4,9 @@ import { Link } from 'react-router';
 
 export default class PrimaryNav extends React.Component {
 	render() {
-		return (
-			<nav>
-				<h1>PrimaryNav</h1>
+		let nav = null;
+		if ( this.props.routes ) {
+			nav = (
 				<ul>
 					{this.props.routes.map( ( route, index ) => {
 						return (
@@ -16,6 +16,12 @@ export default class PrimaryNav extends React.Component {
 						);
 					})}
 				</ul>
+			);
+		}
+		return (
+			<nav>
+				<h1>PrimaryNav</h1>
+				{ nav }
 			</nav>
 		);
 	}

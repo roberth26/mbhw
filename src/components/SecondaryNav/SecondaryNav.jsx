@@ -4,20 +4,24 @@ import { Link } from 'react-router';
 
 export default class SecondaryNav extends React.Component {
 	render() {
+		let nav = null;
+		if ( this.props.routes ) {
+			nav = (
+				<ul>
+					{this.props.routes.map( ( route, index ) => {
+						return (
+							<li key={ index }>
+								<Link to={ route.path }>{ route.name }</Link>
+							</li>
+						);
+					})}
+				</ul>
+			);
+		}
 		return (
 			<nav>
 				<h1>SecondaryNav</h1>
-				<ul>
-					{if ( this.props.routes ) {
-						this.props.routes.map( ( route, index ) => {
-							return (
-								<li key={ index }>
-									<Link to={ route.path }>{ route.name }</Link>
-								</li>
-							);
-						})
-					}}
-				</ul>
+				{ nav }
 			</nav>
 		);
 	}
