@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
+import './PrimaryNav.scss';
 
 export default class PrimaryNav extends React.Component {
 	render() {
 		let nav = null;
 		if ( this.props.routes ) {
 			nav = (
-				<ul>
+				<ul className="primary-nav__menu">
 					{this.props.routes.map( ( route, index ) => {
 						return (
-							<li key={ index }>
-								<Link to={ route.path }>{ route.name }</Link>
+							<li className="primary-nav__menu__item" key={ index }>
+								<Link className="primary-nav__link" activeClassName="primary-nav__link--active" to={ route.path }>{ route.name }</Link>
 							</li>
 						);
 					})}
@@ -19,8 +20,7 @@ export default class PrimaryNav extends React.Component {
 			);
 		}
 		return (
-			<nav>
-				<h1>PrimaryNav</h1>
+			<nav className="primary-nav">
 				{ nav }
 			</nav>
 		);

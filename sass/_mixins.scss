@@ -18,11 +18,9 @@
     @if $extend == true {
         @extend %center_vertical;
     } @else {
-        &:after {
-			position: absolute;
-			top: 50%;
-			transform: translateY( -50% );
-        }
+		position: absolute;
+		top: 50%;
+		transform: translateY( -50% );
     }
 }
 
