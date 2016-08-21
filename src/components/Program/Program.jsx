@@ -6,7 +6,7 @@ export default class Program extends React.Component {
 	render() {
 		return (
 			<article className="program">
-				<h2 className="program__title">Program Title</h2>
+				<h2 className="program__title">{ this.props.program.Name }</h2>
 			</article>
 		);
 	}

@@ -9,15 +9,12 @@
 	box-sizing: border-box;
 }
 
-html {
-	//background-color: $bg_color_alt;
-}
-
 body {
 	background-color: rgb( 244, 244, 238 );
 }
 
 main {
 	min-height: 100px;
+	padding-top: $gutter_width;
 	background: linear-gradient( to bottom, rgb( 229, 228, 220 ) 0%, rgb( 244, 244, 238 ) 100px );
 }

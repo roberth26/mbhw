@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './App.scss';
 import Header from '../Header/Header.jsx';
 
 export default class App extends React.Component {

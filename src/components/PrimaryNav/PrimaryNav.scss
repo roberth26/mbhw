@@ -75,5 +75,11 @@
 				display: none;
 			}
 		}
+
+		&:hover,
+		&:active {
+			background: white;
+			color: black;
+		}
 	}
 }
