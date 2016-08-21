@@ -21,10 +21,12 @@ p {
     line-height: 1.5;
     font-size: 1.6rem;
     margin-bottom: $gutter_width;
-    color: rgb( 80, 80, 80 );
+    color: #4d4d42;
 }
 
 a {
+    color: inherit;
+    
     &:hover {
         text-decoration: none;
     }
@@ -40,21 +42,21 @@ b {
 h1 {
 	font-size: 2.4rem;
 	font-weight: bold;
-    color: rgb( 80, 80, 80 );
+    color: $main_font_color;
 }
 
 h2 {
 	font-size: 2.2rem;
 	font-weight: bold;
-    color: rgb( 80, 80, 80 );
+    color: $main_font_color;
 }
 
 h3 {
 	font-size: 2.0rem;
-    color: rgb( 80, 80, 80 );
+    color: $main_font_color;
 }
 
 h4 {
 	font-size: 1.8rem;
-    color: rgb( 80, 80, 80 );
+    color: $main_font_color;
 }

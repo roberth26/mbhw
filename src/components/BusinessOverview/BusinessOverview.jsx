@@ -37,7 +37,7 @@ export default class BusinessOverview extends React.Component {
 			this.setState({
 				programs: request.data
 			});
-		}.bind( this ), 3000 ); // wait 3 seconds to simulate network latency
+		}.bind( this ), 1000 ); // simulate network latency
 	}
 
 	componentDidMount() {
@@ -58,8 +58,7 @@ export default class BusinessOverview extends React.Component {
 			});
 		}
 		return (
-			<div className="business-overview">
-				
+			<div className="business-overview">				
 				<aside className="sidebar">
 					<a className="program-btn" onClick={ this.show_form }></a>
 					<span className="program-btn-label">New Program</span>

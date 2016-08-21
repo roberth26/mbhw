@@ -13,6 +13,7 @@
 
 		&__item {
 			display: inline;
+			color: #709582;
 
 			&:first-of-type {
 				.primary-nav__link {
@@ -37,7 +38,6 @@
 		background-color: white;
 		padding: 0 20px;
 		position: relative;
-		color: #709582;
 		text-decoration: none;
 		position: relative;
 		border-top: 1px solid rgb( 220, 220, 220 );
@@ -63,8 +63,7 @@
 			margin-left: -1px;
 			height: 43px;
 			line-height: 43px;
-			color: rgb( 60, 60, 60 );
-			//box-shadow: 0 2px 4px rgba( 0, 0, 0, .5 );
+			color: $main_font_color;
 			z-index: 9;
 			border-top-left-radius: 4px;
 			border-top-right-radius: 4px;
@@ -79,7 +78,7 @@
 		&:hover,
 		&:active {
 			background: white;
-			color: black;
+			color: $main_font_color;
 		}
 	}
 }
