@@ -1,4 +1,4 @@
-@import '../../../sass/_mixins';
+@import '../../../sass/_component';
 
 .secondary-nav {
 	background: white;
@@ -28,6 +28,7 @@
 
 	&__menu {
 		@include clearfix;
+		margin-left: -15px;
 
 		&__item {
 			display: inline;			

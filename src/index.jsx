@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-router';
-
+import '../sass/global.scss';
 import App from './components/App/App.jsx';
 import BusinessOverview from './components/BusinessOverview/BusinessOverview.jsx';
 import Blank from './components/Blank/Blank.jsx';

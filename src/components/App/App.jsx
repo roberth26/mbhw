@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import '../../../sass/global.scss';
+import './App.scss';
 import Header from '../Header/Header.jsx';
 
 export default class App extends React.Component {
@@ -13,7 +13,7 @@ export default class App extends React.Component {
 		return (
 			<div>
 				<Header { ...child_props } />
-				<main>
+				<main className="main">
 					<div className="container">
 						{ React.cloneElement( this.props.children, child_props ) }
 					</div>

@@ -1,4 +1,4 @@
-@import '../../../sass/_mixins';
+@import '../../../sass/_component';
 
 .header {
 	background: #ecf7f2;
@@ -6,5 +6,7 @@
 	&__logo {
 		float: left;
 		padding: 10px 0 0 15px;
+		position: relative;
+		z-index: 10;
 	}
 }

@@ -1,0 +1,13 @@
+@import '../../../sass/_component';
+
+.program {
+	float: left;
+	width: 240px;
+	background-color: white;
+	border: 1px solid lightgrey;
+	box-shadow: 0 2px 4px rgba( 0, 0, 0, .25 );
+
+	&__title {
+
+	}
+}

@@ -1,4 +1,4 @@
-@import '../../../sass/_mixins';
+@import '../../../sass/_component';
 
 .primary-nav {
 	@include clearfix;
@@ -13,6 +13,12 @@
 
 		&__item {
 			display: inline;
+
+			&:first-of-type {
+				.primary-nav__link {
+					border-left: 1px solid rgb( 220, 220, 220 );
+				}
+			}
 
 			&:last-of-type {
 				.primary-nav__link {
@@ -34,8 +40,8 @@
 		color: #709582;
 		text-decoration: none;
 		position: relative;
-		border-top: 1px solid rgba( 0, 0, 0, .07 );
-		border-bottom: 1px solid rgba( 0, 0, 0, .15 );
+		border-top: 1px solid rgb( 220, 220, 220 );
+		border-bottom: 1px solid rgb( 220, 220, 220 );
 		background: linear-gradient( to bottom, rgba( 255, 255, 255, 1 ) 0%,
 			rgba( 237, 237, 237, 1 ) 125% );
 
