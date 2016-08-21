@@ -26,7 +26,7 @@ export default class BusinessOverview extends React.Component {
 	render() {
 		return (
 			<div className="business-overview">
-				<aside class="sidebar">
+				<aside className="sidebar">
 					<a className="program-btn" onClick={ this.show_form }>New Program</a>
 				</aside>
 				<section className="program-grid">

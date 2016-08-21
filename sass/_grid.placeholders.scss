@@ -16,19 +16,19 @@
 	min-height: 1px;
 }
 
-// generate mobile column classes (12)
-@for $i from 12 through 1 {
-    %col-#{$i}-mobile {
+// generate desktop column classes (16)
+@for $i from 16 through 1 {
+    %col-#{$i}-desktop {
     	@extend %col;
-        width: calc( 100% * #{$i} / 12 );
+        width: calc( 100% * #{$i} / 16 );
     }
 }
 
-@media ( min-width: $desktop_min ) {
-	// generate desktop column classes (12)
-	@for $i from 12 through 1 {
-	    %col-#{$i}-desktop {
-	        width: calc( 100% * #{$i} / 12 );
+@media ( max-width: $mobile_max ) {
+	// generate mobile column classes (16)
+	@for $i from 16 through 1 {
+	    %col-#{$i}-mobile {
+	        width: calc( 100% * #{$i} / 16 );
 	    }
 	}
 }

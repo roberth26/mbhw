@@ -1,5 +1,10 @@
 @import '../../../sass/_component';
 
+.sidebar {
+	@extend %col-3-desktop;
+}
+
 .program-grid {
+	@extend %col-13-desktop;
 	@include clearfix;
 }
