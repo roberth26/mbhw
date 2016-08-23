@@ -1,34 +1,54 @@
+@mixin container( $extend: true ) {
+	@if ( $extend ) {
+		@extend %container;
+	} @else {
+		margin: 0 auto;
+		max-width: 100%;
+		padding: 0 ( $gutter_width / 2 );
+		width: $container_width + $gutter_width;
+	}
+}
+
 %container {
-	margin: 0 auto;
-	width: 100%;
-	padding: 0 ( $gutter_width / 2 );
-	max-width: 960px + $gutter_width;
+	@include container( $extend: false );
+}
+
+@mixin row( $extend: true ) {
+	@if ( $extend ) {
+		@extend %row;
+	} @else {
+		margin: 0 ( $gutter_width / 2 * -1 );
+		@include clearfix( $extend );
+	}
 }
 
 %row {
-	margin: 0 ( $gutter_width / 2 * -1 );
-	@include clearfix;
+	@include row( $extend: false );
 }
 
-%col {
-	float: left;
-	padding: 0 ( $gutter_width / 2 );
-	min-height: 1px;
+@mixin col( $width: 12, $extend: true ) {
+	@if ( $extend ) {
+		@extend %col-#{$width}#{ if( $extend, '', '-desktop' ) };
+	} @else {
+		float: left;
+		padding: 0 ( $gutter_width / 2 );
+		min-height: 1px;
+		width: calc( 100% * #{$width} / 12 );
+	}
 }
 
-// generate desktop column classes (16)
-@for $i from 16 through 1 {
-    %col-#{$i}-desktop {
-    	@extend %col;
-        width: calc( 100% * #{$i} / 16 );
-    }
+// generate mobile column placeholders (12)
+@for $i from 12 through 1 {
+    %col-#{$i} {
+		@include col( $width: $i, $extend: false );
+	}
 }
 
 @media ( max-width: $mobile_max ) {
-	// generate mobile column classes (16)
-	@for $i from 16 through 1 {
-	    %col-#{$i}-mobile {
-	        width: calc( 100% * #{$i} / 16 );
+	// generate desktop column placeholders (12)
+	@for $i from 12 through 1 {
+	    %col-#{$i}-desktop {
+	        @include col( $width: $i, $extend: false );
 	    }
 	}
 }

@@ -1,34 +1,23 @@
 .container {
-	margin: 0 auto;
-	width: 100%;
-	padding: 0 ( $gutter_width / 2 );
-	max-width: 960px + $gutter_width;
+	@include container;
 }
 
 .row {
-	margin: 0 ( $gutter_width / 2 * -1 );
-	@include clearfix;
+	@include row;
 }
 
-.col {
-	float: left;
-	padding: 0 ( $gutter_width / 2 );
-	min-height: 1px;
-}
-
-// generate desktop column classes (16)
-@for $i from 16 through 1 {
+// generate desktop column classes (12)
+@for $i from 12 through 1 {
     .col-#{$i}-desktop {
-    	@extend .col;
-        width: calc( 100% * #{$i} / 16 );
+    	@include col( $width: $i );
     }
 }
 
 @media ( max-width: $mobile_max ) {
-	// generate mobile column classes (16)
-	@for $i from 16 through 1 {
+	// generate mobile column classes (12)
+	@for $i from 12 through 1 {
 	    .col-#{$i}-mobile {
-	        width: calc( 100% * #{$i} / 16 );
+	        @include col( $width: $i, $extend: false );
 	    }
 	}
 }

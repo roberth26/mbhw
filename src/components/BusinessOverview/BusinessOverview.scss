@@ -1,11 +1,16 @@
 @import '../../../sass/_component';
 
 .business-overview {
-	@extend %row;
+	@include row;
 }
 
 .sidebar {
-	@extend %col-2-desktop;
+	@include col( 2 );
+
+	@media ( max-width: $mobile_max ) {
+		@include col( $width: 12, $extend: false );
+		margin-bottom: $gutter_width;
+	}
 }
 
 .program-btn {
@@ -53,6 +58,22 @@
 }
 
 .program-grid {
-	@extend %col-14-desktop;
+	@include col( 10 );
 	@include clearfix;
+
+	@media ( max-width: $mobile_max ) {
+		@include col( $width: 12, $extend: false );
+	}
+
+	&__row {
+		@include row;
+	}
+
+	&__col {
+		@include col( 4 );
+
+		@media ( max-width: $mobile_max ) {
+			@include col( $width: 6, $extend: false );
+		}
+	}
 }

@@ -8,5 +8,9 @@
 		padding: 10px 0 0 15px;
 		position: relative;
 		z-index: 10;
+
+		@media ( max-width: $mobile_max ) {
+			margin-bottom: $gutter_width / 2;
+		}
 	}
 }

@@ -54,7 +54,11 @@ export default class BusinessOverview extends React.Component {
 		let programs = <LoadingIndicator text="Loading Business Overview" />;
 		if ( this.state.programs && this.state.programs.length ) {
 			programs = this.state.programs.map( ( program, index ) => {
-				return <Program key={ index } program={ program } />;
+				return (
+					<div key={ index } className="program-grid__col">
+						<Program program={ program } />
+					</div>
+				);
 			});
 		}
 		return (
@@ -63,7 +67,9 @@ export default class BusinessOverview extends React.Component {
 					<a className="program-btn" onClick={ this.show_form }></a>
 					<span className="program-btn-label">New Program</span>
 				</aside>
-				<section className="program-grid">{ programs }</section>
+				<section className="program-grid">
+					<div className="program-grid__row">{ programs }</div>
+				</section>
 				{ this.state.show_form ? <CreateProgram on_close={ this.hide_form } /> : null }
 			</div>
 		);

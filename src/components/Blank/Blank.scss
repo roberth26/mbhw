@@ -1,0 +1,12 @@
+@import '../../../sass/_component';
+
+.blank {
+	&__title {
+		font-size: 2.2rem;
+		margin-bottom: $gutter_width;
+	}
+
+	&__subtitle {
+		font-size: 1.8rem;
+	}
+}

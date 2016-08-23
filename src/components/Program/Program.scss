@@ -1,17 +1,30 @@
 @import '../../../sass/_component';
 
 .program {
-	float: left;
-	width: 240px;
-	height: 320px;
 	border-radius: 4px;
 	padding: 24px;
-	margin-right: 24px;
 	background-color: white;
 	border: 1px solid lightgrey;
+	margin-bottom: $gutter_width;
 	box-shadow: 0 2px 3px -1px rgba( 0, 0, 0, .1 );
 
 	&__title {
 		font-size: 1.8rem;
+	}
+
+	&__close-btn {
+		float: right;
+		width: 23px;
+		height: 21px;
+		background-repeat: no-repeat;
+		border: 1px solid #f1f1ee;
+		border-radius: 2px;
+		background-position: 0 2px;
+		cursor: pointer;
+
+		&:hover,
+		&:active {
+			background-position: 0 -15px;
+		}
 	}
 }
