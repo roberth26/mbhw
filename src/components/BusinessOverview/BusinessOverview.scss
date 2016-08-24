@@ -74,10 +74,6 @@
 		@include col( 4 );
 
 		@media ( max-width: $mobile_max ) {
-			@include col( $width: 6, $extend: false );
-		}
-
-		@media ( max-width: $small_max ) {
 			@include col( $width: 12, $extend: false );
 		}
 	}

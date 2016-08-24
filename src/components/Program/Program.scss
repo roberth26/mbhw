@@ -7,6 +7,7 @@
 	border: 1px solid #e6e6dd;
 	margin-bottom: $gutter_width;
 	box-shadow: 0 2px 3px -1px rgba( 0, 0, 0, .1 );
+	max-width: 480px;
 
 	&__title {
 		font-size: 1.6rem;
@@ -106,6 +107,10 @@
 
 			@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
 				margin: 0 ( $gutter_width / 2 * -1 );
+
+				&--headings {
+					display: none;
+				}
 			}
 		}
 
@@ -143,9 +148,45 @@
 			}
 		}
 
+		&__graph-wrapper {
+			overflow: hidden;
+			position: relative;
+			height: 20px;
+			width: 65px;
+			margin: 0 auto;
+		}
+
 		&__graph {
-			display: block;
-			max-width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width: 100%;
+
+			&--01 {
+				margin-top: -20px;
+			}
+
+			&--02 {
+				margin-top: -40px;
+			}
+
+			&--03 {
+				margin-top: -60px;
+			}
+
+			&--04 {
+				margin-top: -80px;
+			}
+
+			&--05 {
+				margin-top: -100px;
+			}
+
+			&--06 {
+				margin-top: -120px;
+			}
 		}
 	}
 
@@ -153,6 +194,7 @@
 		max-height: 0;
 		transition: all .25s ease;
 		opacity: 0;
+		overflow: hidden;
 	}
 
 	&__collapse-toggle {
