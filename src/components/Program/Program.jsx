@@ -8,57 +8,79 @@ export default class Program extends React.Component {
 		this.state = {
 			expanded: false
 		};
-		this.expand = this.expand.bind( this );
-		this.collapse = this.collapse.bind( this );
+		this.toggle_expanded = this.toggle_expanded.bind( this );
 	}
 
-	expand() {
+	toggle_expanded() {
 		this.setState({
-			expanded: true
-		});
-	}
-
-	collapse() {
-		this.setState({
-			expanded: false
+			expanded: !this.state.expanded
 		});
 	}
 
 	render() {
-		let styles = {
+		let edit_btn_styles = {
 			backgroundImage: 'url( images/pencil_icons.png )'
 		};
-		let pricing_options = this.props.program.pricing_options.map( ( po, index ) => {
-			return (
-				<li key={ index } className="program__pricing-options__item">
-					{ po.Name }
-				</li>
-			);
-		});
 		return (
 			<article className={ this.state.expanded ? 'program program--expanded' :  'program' }>
-				<a className="program__edit-btn" style={ styles }></a>
+				<a className="program__edit-btn" style={ edit_btn_styles }></a>
 				<h2 className="program__title">{ this.props.program.Name }</h2>
 				<h3 className="program__graph-title">Sales by month</h3>
-				<img className="program__graph" src="images/graph.png" alt={ this.props.program.name + ' monthly sales' } />
+				<img className="program__graph" src="images/graph.png"
+					alt={ this.props.program.Name + ' monthly sales' } />
 				<div className="program__totals">
-					<div className="row">
-						<div className="col-4 program__totals__title">Total Monthly</div>
-						<div className="col-4 program__totals__title">Current</div>
-						<div className="col-4 program__totals__title">1-Year</div>
-					</div>
-					<div className="row">
-						<div className="col-4">Sales</div>
-						<div className="col-4">$$$</div>
-						<div className="col-4">graph</div>
+					<div className="program__totals__row">
+						<div className="program__totals__col col-5">
+							<div className="program__totals__title">Total Monthly</div>
+							<div className="program__totals__cell">Sales</div>
+						</div>
+						<div className="program__totals__col col-3">
+							<div className="program__totals__title">Current</div>
+							<div className="program__totals__cell program__totals__cell--dark">$$$</div>
+						</div>
+						<div className="program__totals__col col-4">
+							<div className="program__totals__title program__totals__title--centered">1-Year</div>
+							<div className="program__totals__cell">
+								<img className="program__totals__graph" src="images/spark_line.png"
+									alt={ this.props.program.Name + ' 1-year' } />
+							</div>
+						</div>
 					</div>
 				</div>
-				<a className="program__more-btn" onClick={ this.expand }>more</a>
-				<h3>{ this.props.program.TotalMonthlySales }</h3>
 				<div className="program__collapse">
-					<ul className="program__pricing-options">{ pricing_options }</ul>
+					<div className="program__pricing-options">
+						<div className="program__pricing-options__row">
+							<div className="program__pricing-options__col col-5">
+								<div className="program__pricing-options__title">Price Name</div>
+							</div>
+							<div className="program__pricing-options__col col-3">
+								<div className="program__pricing-options__title">Current</div>
+							</div>
+							<div className="program__pricing-options__col col-4">
+								<div className="program__pricing-options__title program__pricing-options__title--centered">1-Year</div>
+							</div>
+						</div>
+						{this.props.program.pricing_options.map( ( po, i ) => {
+							return (
+								<div className="program__pricing-options__row">
+									<div className="program__pricing-options__col col-5">
+										<div className="program__pricing-options__cell program__pricing-options__cell--dark">{ po.Name }</div>
+									</div>
+									<div className="program__pricing-options__col col-3">
+										<div className="program__pricing-options__cell">$$$</div>
+									</div>
+									<div className="program__pricing-options__col col-4">
+										<div className="program__pricing-options__cell">
+											<img className="program__pricing-options__graph" src="simages/spark_lines.png"
+												alt={ this.props.program.Name + ' 1-year' } />
+										</div>
+									</div>
+								</div>
+							);
+						})}
+					</div>
 				</div>
-				<a className="program__less-btn" onClick={ this.collapse }>less</a>
+				<a className="program__collapse-toggle" onClick={ this.toggle_expanded }>{ this.state.expanded ? 'less' : 'more' }</a>
 			</article>
 		);
 	}

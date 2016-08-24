@@ -10,6 +10,24 @@
 	background: rgba( 255, 255, 255, .8 );
 	opacity: 1;
 
+	&__close-btn {
+		float: right;
+		width: 30px;
+		height: 30px;
+		border: 1px solid #f4f4ee;
+		border-radius: 2px;
+		cursor: pointer;
+		text-align: center;
+		line-height: 25px;
+		opacity: .7;
+		transition: all .25s ease;
+
+		&:hover,
+		&:active {
+			opacity: 1;
+		}
+	}
+
 	&__popup {
 		@include center_vertical;
 		position: fixed;
@@ -27,7 +45,8 @@
 	}
 
 	&__title {
-		font-size: 2.2rem;
+		font-size: 2rem;
+		line-height: 30px;
 		margin-bottom: $gutter_width;
 	}
 

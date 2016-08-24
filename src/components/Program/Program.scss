@@ -2,7 +2,7 @@
 
 .program {
 	border-radius: 4px;
-	padding: $gutter_width;
+	padding: $gutter_width $gutter_width 0 $gutter_width;
 	background-color: white;
 	border: 1px solid #e6e6dd;
 	margin-bottom: $gutter_width;
@@ -48,10 +48,104 @@
 		background-color: #fbfbf6;
 		border-top: 1px solid #f5f5eb;
 		border-bottom: 1px solid #f5f5eb;
+		font-size: 1.2rem;
+		color: #b4b4aa;
+
+		&__row {
+			@include row();
+			margin: 0 -2px;
+
+			@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
+				margin: 0 ( $gutter_width / 2 * -1 );
+			}
+		}
+
+		&__col {
+			padding: 0 2px;
+
+			@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
+				@include col( 12, $extend: false );
+				margin-bottom: 10px;
+			}
+		}
 
 		&__title {
-			font-size: 1.2rem;
+			font-size: .9rem;
 			color: #b4b4aa;
+			margin-bottom: 4px;
+
+			&--centered {
+				text-align: center;
+
+				@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
+					text-align: initial;
+				}
+			}
+		}
+
+		&__cell {
+			&--dark {
+				color: #6b6b65;
+			}
+		}
+
+		&__graph {
+			display: block;
+			max-width: 100%;
+		}
+	}
+
+	&__pricing-options {
+		font-size: 1.0rem;
+		color: #b4b4aa;
+		padding-top: ( $gutter_width / 2 );
+
+		&__row {
+			@include row();
+			margin: 0 -2px;
+
+			@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
+				margin: 0 ( $gutter_width / 2 * -1 );
+			}
+		}
+
+		&__col {
+			padding: 0 2px;
+			margin-bottom: 4px;
+
+			@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
+				@include col( 12, $extend: false );
+				margin-bottom: 10px;
+			}
+		}
+
+		&__title {
+			font-size: .9rem;
+			color: #b4b4aa;
+			margin-bottom: 4px;
+
+			&--centered {
+				text-align: center;
+
+				@media ( max-width: 960px ) and ( min-width: $mobile_max ) {
+					text-align: initial;
+				}
+			}
+		}
+
+		&__cell {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+
+			&--dark {
+				color: #6b6b65;
+			}
+		}
+
+		&__graph {
+			display: block;
+			max-width: 100%;
 		}
 	}
 
@@ -61,22 +155,25 @@
 		opacity: 0;
 	}
 
-	&__less-btn {
-		display: none;
+	&__collapse-toggle {
+		position: relative;
+		display: block;
+		font-size: 1.2rem;
+		color: #b4b4aa;
+		padding: ( $gutter_width / 3 ) 0 ;	
+		cursor: pointer;
+		transition: all .25s ease;
+
+		&:hover,
+		&:active {
+			color: #6b6b65;
+		}
 	}
 
 	&--expanded {
 		.program__collapse {
-			max-height: 600px;
+			max-height: 240px;
 			opacity: 1;
-		}
-
-		.program__more-btn {
-			display: none;
-		}
-
-		.program__less-btn {
-			display: block;
 		}
 	}
 

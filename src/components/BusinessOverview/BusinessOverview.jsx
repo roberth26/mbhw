@@ -41,9 +41,9 @@ export default class BusinessOverview extends React.Component {
 			programs = programs.data;
 			pricing_options = pricing_options.data;
 			for ( let i = 0; i < pricing_options.length; i++ ) {
-				let matching_program = programs.filter( ( p ) => {
+				let matching_program = programs.find( ( p ) => {
 					return p.ProgramID == pricing_options[ i ].ProgramID
-				})[ 0 ];
+				});
 				if ( matching_program ) {
 					if ( matching_program.pricing_options ) {
 						matching_program.pricing_options.push( pricing_options[ i ] );
@@ -79,7 +79,7 @@ export default class BusinessOverview extends React.Component {
 		}
 
 		let top_3 = [];
-		let programs = this.state.programs;
+		let programs = this.state.programs.slice( 0 );
 		let end = programs.length - 4;
 		for ( let i = programs.length - 1; i > end; i-- ) {
 			top_3.push( programs[ i ] );

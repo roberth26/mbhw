@@ -26,14 +26,14 @@
 	@include row( $extend: false );
 }
 
-@mixin col( $width: 12, $extend: true, $important: false ) {
+@mixin col( $width: 12, $extend: true ) {
 	@if ( $extend ) {
 		@extend %col-#{$width}#{ if( $extend, '', '-desktop' ) };
 	} @else {
-		float: left #{if( $important, '!important', '' )};
-		padding: 0 ( $gutter_width / 2 ) #{if( $important, '!important', '' )};
-		min-height: 1px #{if( $important, '!important', '' )};
-		width: calc( 100% * #{$width} / 12 ) #{if( $important, '!important', '' )};
+		float: left;
+		padding: 0 ( $gutter_width / 2 );
+		min-height: 1px;
+		width: calc( 100% * #{$width} / 12 );
 	}
 }
 

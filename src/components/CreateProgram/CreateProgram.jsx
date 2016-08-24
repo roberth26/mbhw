@@ -10,8 +10,9 @@ export default class CreateProgram extends React.Component {
 	}
 
 	handle_click( event ) {
-		if ( event.target == this.refs.background )
+		if ( event.target == this.refs.background || event.target == this.refs.close_btn ) {
 			this.props.on_close();			
+		}
 	}
 
 	handle_submit( event ) {
@@ -23,6 +24,7 @@ export default class CreateProgram extends React.Component {
 		return (
 			<div className="create-program" onClick={ this.handle_click } ref="background">
 				<form className="create-program__popup" onSubmit={ this.handle_submit }>
+					<a className="create-program__close-btn" onClick={ this.handle_click } ref="close_btn">x</a>
 					<h1 className="create-program__title">Create Program</h1>
 					<input className="create-program__input" name="program-name" type="text" placeholder="Program Name" />
 					<div className="create-program__select">
