@@ -43,8 +43,7 @@ export default class BusinessOverview extends React.Component {
 			for ( let i = 0; i < pricing_options.length; i++ ) {
 				let matching_program = programs.filter( ( p ) => {
 					return p.ProgramID == pricing_options[ i ].ProgramID
-				});
-				matching_program = matching_program[ 0 ];
+				})[ 0 ];
 				if ( matching_program ) {
 					if ( matching_program.pricing_options ) {
 						matching_program.pricing_options.push( pricing_options[ i ] );
@@ -54,6 +53,9 @@ export default class BusinessOverview extends React.Component {
 					}
 				}
 			}
+			programs = programs.sort( ( a, b ) => {
+				return a.TotalMonthlySales > b.TotalMonthlySales;
+			});
 			setTimeout( function() {
 				if ( !self.mounted ) return;
 				self.setState({
@@ -68,28 +70,48 @@ export default class BusinessOverview extends React.Component {
 	}
 
 	render() {
-		let programs = <LoadingIndicator text="Loading Business Overview" />;
-		if ( this.state.programs && this.state.programs.length ) {
-			programs = this.state.programs.map( ( program, index ) => {
-				return (
-					<div key={ index } className="program-grid__col">
-						<Program program={ program } />
-					</div>
-				);
-			});
+		if ( !this.state.programs || !this.state.programs.length ) {
+			return (
+				<div className="business-overview">
+					<LoadingIndicator text="Loading Business Overview" />
+				</div>
+			);
+		}
+
+		let top_3 = [];
+		let programs = this.state.programs;
+		let end = programs.length - 4;
+		for ( let i = programs.length - 1; i > end; i-- ) {
+			top_3.push( programs[ i ] );
+			programs.splice( i, 1 );
 		}
 		return (
-			<div className="business-overview">				
-				<aside className="sidebar">
+			<div className="business-overview">
+				<aside className="business-overview__sidebar">
 					<a className="program-btn" onClick={ this.show_form }></a>
 					<span className="program-btn-label">New Program</span>
 				</aside>
-				<section className="program-grid">
-					<div className="program-grid__row">{ programs }</div>
-				</section>
-				<ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={ 250 } transitionLeaveTimeout={ 100 }>
-					{ this.state.show_form ? <CreateProgram key={ 'create-program' } on_close={ this.hide_form } /> :  null }
-				</ReactCSSTransitionGroup>
+				<div className="business-overview__content">
+					<section className="program-grid">
+						{top_3.map( ( program, index ) => {
+							return (
+								<div key={ index } className="program-grid__col">
+									<Program program={ program } />
+								</div>
+							);
+						})}
+					</section>
+					<section className="program-table">
+						{programs.map( ( program, index ) => {
+							return (
+								<div key={ index }>{program.Name}</div>
+							);
+						})}
+					</section>
+					<ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={ 250 } transitionLeaveTimeout={ 100 }>
+						{ this.state.show_form ? <CreateProgram key={ 'create-program' } on_close={ this.hide_form } /> :  null }
+					</ReactCSSTransitionGroup>
+				</div>
 			</div>
 		);
 	}

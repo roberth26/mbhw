@@ -8,7 +8,7 @@
 
 // generate desktop column classes (12)
 @for $i from 12 through 1 {
-    .col-#{$i}-desktop {
+    .col-#{$i} {
     	@include col( $width: $i );
     }
 }

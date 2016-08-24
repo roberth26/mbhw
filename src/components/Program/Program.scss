@@ -2,17 +2,19 @@
 
 .program {
 	border-radius: 4px;
-	padding: 24px;
+	padding: $gutter_width;
 	background-color: white;
-	border: 1px solid lightgrey;
+	border: 1px solid #e6e6dd;
 	margin-bottom: $gutter_width;
 	box-shadow: 0 2px 3px -1px rgba( 0, 0, 0, .1 );
 
 	&__title {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
+		margin-bottom: $gutter_width;
+		line-height: 21px;
 	}
 
-	&__close-btn {
+	&__edit-btn {
 		float: right;
 		width: 23px;
 		height: 21px;
@@ -27,4 +29,56 @@
 			background-position: 0 -15px;
 		}
 	}
+
+	&__graph-title {
+		font-size: 1.2rem;
+		color: #b4b4aa;
+		margin-bottom: $gutter_width / 3;
+	}
+
+	&__graph {
+		display: block;
+		max-width: 100%;
+		margin-bottom: $gutter_width / 2;
+	}
+
+	&__totals {
+		margin: 0 ( $gutter_width * -1 );
+		padding: ( $gutter_width / 2 ) $gutter_width;
+		background-color: #fbfbf6;
+		border-top: 1px solid #f5f5eb;
+		border-bottom: 1px solid #f5f5eb;
+
+		&__title {
+			font-size: 1.2rem;
+			color: #b4b4aa;
+		}
+	}
+
+	&__collapse {
+		max-height: 0;
+		transition: all .25s ease;
+		opacity: 0;
+	}
+
+	&__less-btn {
+		display: none;
+	}
+
+	&--expanded {
+		.program__collapse {
+			max-height: 600px;
+			opacity: 1;
+		}
+
+		.program__more-btn {
+			display: none;
+		}
+
+		.program__less-btn {
+			display: block;
+		}
+	}
+
+
 }

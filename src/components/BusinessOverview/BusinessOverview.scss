@@ -2,16 +2,26 @@
 
 .business-overview {
 	@include row;
-}
 
-.sidebar {
-	@include col( 2 );
+	&__sidebar {
+		@include col( 2 );
 
-	@media ( max-width: $mobile_max ) {
-		@include col( $width: 12, $extend: false );
-		margin-bottom: $gutter_width;
+		@media ( max-width: $mobile_max ) {
+			@include col( $width: 12, $extend: false );
+			margin-bottom: $gutter_width;
+		}
+	}
+
+	&__content {
+		@include col( 10 );
+
+		@media ( max-width: $mobile_max ) {
+			@include col( $width: 12, $extend: false );
+		}
 	}
 }
+
+
 
 .program-btn {
 	display: block;
@@ -58,22 +68,17 @@
 }
 
 .program-grid {
-	@include col( 10 );
-	@include clearfix;
-
-	@media ( max-width: $mobile_max ) {
-		@include col( $width: 12, $extend: false );
-	}
-
-	&__row {
-		@include row;
-	}
+	@include row();
 
 	&__col {
 		@include col( 4 );
 
 		@media ( max-width: $mobile_max ) {
 			@include col( $width: 6, $extend: false );
+		}
+
+		@media ( max-width: $small_max ) {
+			@include col( $width: 12, $extend: false );
 		}
 	}
 }
