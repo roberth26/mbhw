@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Axios from 'axios';
+import format_number from 'format-number';
 import './BusinessOverview.scss';
 import CreateProgram from '../CreateProgram/CreateProgram.jsx';
 import Program from '../Program/Program.jsx';
@@ -85,6 +86,7 @@ export default class BusinessOverview extends React.Component {
 			top_3.push( programs[ i ] );
 			programs.splice( i, 1 );
 		}
+		programs.reverse();
 		return (
 			<div className="business-overview">
 				<aside className="business-overview__sidebar">
@@ -102,9 +104,33 @@ export default class BusinessOverview extends React.Component {
 						})}
 					</section>
 					<section className="program-table">
+						<div className="program-table__headings">
+							<div className="program-table__col">
+								<div className="program-table__title program-table__title--large">All Programs</div>
+							</div>
+							<div className="program-table__col">
+								<div className="program-table__title">Monthly Sales</div>
+							</div>
+							<div className="program-table__col">
+								<div className="program-table__title">Monthly Attendance</div>
+							</div>
+						</div>
 						{programs.map( ( program, index ) => {
 							return (
-								<div key={ index }>{program.Name}</div>
+								<div className="program-table__row">
+									<div className="program-table__col">
+										<div className="program-table__cell">
+											<span>{ program.Name }</span>
+											<a className="program-table__collapse-toggle">more</a>
+										</div>
+									</div>
+									<div className="program-table__col">
+										<div className="program-table__cell">${ format_number( { padRight: 2 } )( program.TotalMonthlySales ) }</div>
+									</div>
+									<div className="program-table__col">
+										<div className="program-table__cell">{ program.MonthlyAttendance } <small>visits</small></div>
+									</div>
+								</div>
 							);
 						})}
 					</section>

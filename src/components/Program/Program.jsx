@@ -19,10 +19,10 @@ export default class Program extends React.Component {
 	}
 
 	render() {
-		console.log( this.props.program );
 		let edit_btn_styles = {
 			backgroundImage: 'url( images/pencil_icons.png )'
 		};
+		let pricing_options = this.props.program.pricing_options ? this.props.program.pricing_options : [];
 		return (
 			<article className={ this.state.expanded ? 'program program--expanded' :  'program' }>
 				<a className="program__edit-btn" style={ edit_btn_styles }></a>
@@ -62,7 +62,7 @@ export default class Program extends React.Component {
 								<div className="program__pricing-options__title program__pricing-options__title--centered">1-Year</div>
 							</div>
 						</div>
-						{this.props.program.pricing_options.map( ( po, i ) => {
+						{pricing_options.map( ( po, i ) => {
 							return (
 								<div className="program__pricing-options__row" key={ i }>
 									<div className="program__pricing-options__col col-5">

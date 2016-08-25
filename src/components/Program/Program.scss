@@ -22,12 +22,12 @@
 		background-repeat: no-repeat;
 		border: 1px solid #f1f1ee;
 		border-radius: 2px;
-		background-position: 0 2px;
+		background-position: 0 1px;
 		cursor: pointer;
 
 		&:hover,
 		&:active {
-			background-position: 0 -15px;
+			background-position: 0 -16px;
 		}
 	}
 

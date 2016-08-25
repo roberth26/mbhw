@@ -25,7 +25,8 @@
     "react-router": "^2.6.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-uglify-js-plugin": "^1.1.9"
   },
   "dependencies": {}
 }

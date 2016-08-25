@@ -1,4 +1,6 @@
 var autoprefixer = require( 'autoprefixer' );
+var webpack = require( 'webpack' );
+var webpackUglifyJsPlugin = require( 'webpack-uglify-js-plugin' );
 
 module.exports = {
 	entry: './src/index.jsx',
@@ -6,6 +8,8 @@ module.exports = {
 		path: './',
 		filename: 'bundle.min.js'
 	},
+	devtool: 'cheap-module-source-map',
+	//devtool: 'eval',
   	module: {
 	    loaders: [
 			{
@@ -26,6 +30,18 @@ module.exports = {
 	postcss: [
 		autoprefixer({
 			browsers: [ 'last 5 versions' ]
+		})
+	],
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify( 'production' )
+			}
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+		    compress: {
+		        warnings: false
+		    }
 		})
 	]
 };
