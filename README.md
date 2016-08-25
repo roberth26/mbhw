@@ -10,4 +10,5 @@ svg,
 axios for ajax
 
 *there's an intentional 1 second delay when the data is fetched in order to demonstrate the loading indicator
+*I didn't have time to do any sort of mobile menu
 
