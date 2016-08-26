@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import 'es6-promise';
 import Axios from 'axios';
 import format_number from 'format-number';
 import './BusinessOverview.scss';
@@ -55,7 +56,7 @@ export default class BusinessOverview extends React.Component {
 				}
 			}
 			programs = programs.sort( ( a, b ) => {
-				return a.TotalMonthlySales > b.TotalMonthlySales;
+				return a.TotalMonthlySales - b.TotalMonthlySales;
 			});
 			setTimeout( function() {
 				if ( !self.mounted ) return;
